@@ -61,11 +61,25 @@ using var dbContext = new BookContext();
 ///////////////////////////////////////////////////////////////////////////////////
 // Pasirenkam knyga, kurios pages norim padaryti console.WriteLine
 
-var harryPotterBook = dbContext.Books.Include(b=>b.Pages).FirstOrDefault(b => b.Name == "Harry Potter");
-Console.WriteLine($"Book Id: {harryPotterBook.Id}");
-Console.WriteLine("Book pages");
-foreach (var page in harryPotterBook.Pages.OrderBy(p=>p.Number))
-{
-    Console.WriteLine($"Page number: {page.Number}, content: {page.Content}");
+//var harryPotterBook = dbContext.Books.Include(b=>b.Pages).FirstOrDefault(b => b.Name == "Harry Potter");
+//Console.WriteLine($"Book Id: {harryPotterBook.Id}");
+//Console.WriteLine("Book pages");
+//foreach (var page in harryPotterBook.Pages.OrderBy(p=>p.Number))
+//{
+//    Console.WriteLine($"Page number: {page.Number}, content: {page.Content}");
 
-}
+//}
+
+///////////////////////////////////////////////////////////////////////////////////
+// Gaunam puslapio content ir is kurios knygos yra puslapis // select page and join book
+
+//var page = dbContext.Pages.Include(p => p.Book).FirstOrDefault(p=>p.Id == Guid.Parse("3DF6871F-1A4E-403D-936B-3A33A8098E43"));
+//Console.WriteLine($"Page content: {page.Content}");
+//Console.WriteLine($"Page is from book named: {page.Book.Name}");
+
+///////////////////////////////////////////////////////////////////////////////////
+//Istrinimas // delete book with all pages // istrina knyga, bet kadangi pages padaryti nullable, tai jie lieka, tiesiog bookId pasikeicia i null //
+
+//var harryPotterBook = dbContext.Books.Include(b => b.Pages).FirstOrDefault(b => b.Name == "Harry Potter");
+//dbContext.Books.Remove(harryPotterBook);
+//dbContext.SaveChanges();
