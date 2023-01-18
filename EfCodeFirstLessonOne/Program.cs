@@ -64,7 +64,7 @@ using var dbContext = new BookContext();
 var harryPotterBook = dbContext.Books.Include(b=>b.Pages).FirstOrDefault(b => b.Name == "Harry Potter");
 Console.WriteLine($"Book Id: {harryPotterBook.Id}");
 Console.WriteLine("Book pages");
-foreach (var page in harryPotterBook.Pages)
+foreach (var page in harryPotterBook.Pages.OrderBy(p=>p.Number))
 {
     Console.WriteLine($"Page number: {page.Number}, content: {page.Content}");
 
