@@ -83,3 +83,13 @@ using var dbContext = new BookContext();
 //var harryPotterBook = dbContext.Books.Include(b => b.Pages).FirstOrDefault(b => b.Name == "Harry Potter");
 //dbContext.Books.Remove(harryPotterBook);
 //dbContext.SaveChanges();
+
+
+// trinam knyga su visais jos puslapiais, pries tai page nuimam klaustukus nuo guid ir t.t., kad nebutu nullable
+// cia istrinam visus sukurtus puslapius ir harry potter knyga
+
+var harryPotterBook = dbContext.Books.Include(b => b.Pages).FirstOrDefault(b => b.Name == "Harry Potter");
+////// dbContext.Pages.RemoveRange(harryPotterBook.Pages); sita naudojam jeigu neleidzia trinti knygos, nes neleidzia nullable puslapiu padaryti, 
+////// tai naudojant sita istrinam visus puslapius ir tik paskui knyga
+dbContext.Books.Remove(harryPotterBook);
+dbContext.SaveChanges();
